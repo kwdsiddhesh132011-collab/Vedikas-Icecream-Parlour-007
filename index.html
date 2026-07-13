@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedika's Ice Cream Parlour | Scoopful of Happiness</title>
+    <style>
+        /* Reset and General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: #4a4a4a;
+            background-color: #fff9f0;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: #ffffff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.15);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 800;
+            color: #ff477e; /* Sweet Pink */
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: #ff9f1c; /* Creamy Yellow */
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff477e;
+        }
+
+        /* Hero / Home Section */
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), 
+                        url('https://images.unsplash.com/photo-1501443712940-3de7704670f0?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        #home h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        #home p {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff477e;
+            color: #fff;
+            padding: 12px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(255, 71, 126, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff1f60;
+            transform: translateY(-2px);
+        }
+
+        /* Sections General Styling */
+        section {
+            padding: 100px 8% 60px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #ff477e;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+
+        /* About Section */
+        #about {
+            background-color: #fff;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: #ff9f1c;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        .about-img img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Flavours Section */
+        .flavours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .flavour-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .flavour-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .flavour-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .flavour-info {
+            padding: 25px;
+        }
+
+        .flavour-info h3 {
+            color: #ff477e;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        /* Discount Section */
+        #discount {
+            background: linear-gradient(135deg, #ff477e, #ff9f1c);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 20px;
+            margin: 40px 8%;
+        }
+
+        #discount h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        #discount p {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+        }
+
+        .discount-code {
+            display: inline-block;
+            background: white;
+            color: #ff477e;
+            padding: 10px 25px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            border-radius: 10px;
+            border: 2px dashed #ff477e;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #fff;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ffe5ec;
+            border-radius: 10px;
+            font-size: 1rem;
+            background-color: #fff9f0;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #ff477e;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ff477e;
+            color: #fff;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links li {
+                margin: 0 10px;
+            }
+            #home h1 {
+                font-size: 2.8rem;
+            }
+            #discount h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Vedika's <span>Ice Cream</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#flavours">Ice Cream Flavours</a></li>
+                <li><a href="#discount">Special Discount</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h1>Scoops of Pure Happiness</h1>
+        <p>Handcrafted churned premium ice creams made with 100% natural ingredients.</p>
+        <a href="#flavours" class="btn">View Menu</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">Our Story</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Crafting Smiles Since Day One</h3>
+                <br>
+                <p>Welcome to Vedika's Ice Cream Parlour, the ultimate destination for dessert lovers! We believe that ice cream isn't just a treat—it's an experience. Every single batch is lovingly crafted using fresh dairy cream, real fruits, and rich gourmet toppings.</p>
+                <p>Whether you're looking for classic comfort flavors or adventurous seasonal creations, our parlour serves happiness in a waffle cone, one scoop at a time!</p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=80" alt="Ice cream scoops">
+            </div>
+        </div>
+    </section>
+
+    <!-- Ice Cream Flavours Section -->
+    <section id="flavours">
+        <h2 class="section-title">Signature Flavours</h2>
+        <div class="flavours-grid">
+            
+            <!-- Flavour 1 -->
+            <div class="flavour-card">
+                <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=500&q=80" alt="Creamy Strawberry">
+                <div class="flavour-info">
+                    <h3>Berry Blush Strawberry</h3>
+                    <p>Made with fresh, handpicked garden strawberries and pure cream.</p>
+                </div>
+            </div>
+
+            <!-- Flavour 2 -->
+            <div class="flavour-card">
+                <img src="https://images.unsplash.com/photo-1560008511-11c63416e52d?auto=format&fit=crop&w=500&q=80" alt="Gourmet Chocolate">
+                <div class="flavour-info">
+                    <h3>Dark Chocolate Fudgy Fudge</h3>
+                    <p>Rich, bittersweet Belgian chocolate layered with velvety fudge ribbons.</p>
+                </div>
+            </div>
+
+            <!-- Flavour 3 -->
+            <div class="flavour-card">
+                <img src="https://images.unsplash.com/photo-1472555950005-75215169a501?auto=format&fit=crop&w=500&q=80" alt="Salted Caramel">
+                <div class="flavour-info">
+                    <h3>Salted Caramel Crunch</h3>
+                    <p>Sweet buttery caramel perfectly paired with a hint of sea salt and praline bits.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Special Discount Section -->
+    <section id="discount">
+        <h2>🎉 Sweet Summer Offer! 🎉</h2>
+        <p>Get a massive 20% OFF on your first purchase of any family tub or custom sundae!</p>
+        <div class="discount-code">CODE: VEDIKASCOOPS20</div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Say Hello!</h2>
+        <div class="contact-container">
+            <form action="#" method="POST" onsubmit="alert('Yay! Your message has been sent to Vedika\'s Ice Cream Parlour. We will get back to you shortly!'); return false;">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Favorite Flavor / Feedbacks</label>
+                    <textarea id="message" rows="4" required placeholder="Tell us your cravings..."></textarea>
+                </div>
+                <button type="submit" class="btn" style="border:none; width: 100%; cursor: pointer;">Send Ice Cream Love</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Vedika's Ice Cream Parlour. Churning happiness everyday.</p>
+    </footer>
+
+</body>
+</html>
